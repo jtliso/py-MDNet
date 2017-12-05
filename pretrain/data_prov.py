@@ -47,6 +47,7 @@ class RegionDataset(data.Dataset):
 
         pos_regions = np.empty((0,3,self.crop_size,self.crop_size))
         neg_regions = np.empty((0,3,self.crop_size,self.crop_size))
+        # doing the hard negative mining
         for i, (img_path, bbox) in enumerate(zip(self.img_list[idx], self.gt[idx])):
             image = Image.open(img_path).convert('RGB')
             image = np.asarray(image)

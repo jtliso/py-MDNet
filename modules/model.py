@@ -7,10 +7,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 import torch
+import torch.utils.model_zoo as model_zoo
+import torchvision.models as models
+
 
 def append_params(params, module, prefix):
     for child in module.children():
-        for k,p in child._parameters.iteritems():
+        for k,p in child._parameters.items():
             if p is None: continue
             
             if isinstance(child, nn.BatchNorm2d):
@@ -85,7 +88,7 @@ class MDNet(nn.Module):
             append_params(self.params, module, 'fc6_%d'%(k))
 
     def set_learnable_params(self, layers):
-        for k, p in self.params.iteritems():
+        for k, p in self.params.items():
             if any([k.startswith(l) for l in layers]):
                 p.requires_grad = True
             else:
@@ -93,7 +96,7 @@ class MDNet(nn.Module):
  
     def get_learnable_params(self):
         params = OrderedDict()
-        for k, p in self.params.iteritems():
+        for k, p in self.params.items():
             if p.requires_grad:
                 params[k] = p
         return params

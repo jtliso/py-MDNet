@@ -1,10 +1,12 @@
 from collections import OrderedDict
 
 opts = OrderedDict()
-opts['use_gpu'] = True
+opts['use_gpu'] = False
 
-opts['init_model_path'] = '../models/imagenet-vgg-m.mat'
-opts['model_path'] = '../models/mdnet_vot-otb_new.pth'
+#opts['init_model_path'] = '../models/imagenet-vgg-m.mat'
+opts['init_model_path'] = '../models/resnet18-5c106cde.pth'
+#opts['init_model_path'] = '../models/imagenet-resnet-50-dag.mat'
+opts['model_path'] = '../models/mdnet_vot-otb_new2.pth'
 
 opts['batch_frames'] = 8
 opts['batch_pos'] = 32

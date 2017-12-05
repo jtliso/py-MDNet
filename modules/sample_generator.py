@@ -8,6 +8,8 @@ def gen_samples(generator, bbox, n, overlap_range=None, scale_range=None):
     if overlap_range is None and scale_range is None:
         return generator(bbox, n)
     
+    #calculates the overlap between the samples and the bbox, continues until no more examples or 4 times max
+    # target candidate generation section of paper
     else:
         samples = None
         remain = n
