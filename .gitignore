@@ -7,3 +7,4 @@ pretrain/*.pyc
 tracking/*.pyc
 models/imagenet-vgg-m.mat
 __pycache__
+dataset/vot*/*

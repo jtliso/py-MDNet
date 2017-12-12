@@ -1,11 +1,11 @@
 from collections import OrderedDict
 
 opts = OrderedDict()
-opts['use_gpu'] = False
+opts['use_gpu'] = False # Change this to true if you want to use GPU
 
 #opts['init_model_path'] = '../models/imagenet-vgg-m.mat'
-opts['init_model_path'] = '../models/resnet18-5c106cde.pth'
-#opts['init_model_path'] = '../models/imagenet-resnet-50-dag.mat'
+#opts['init_model_path'] = '../models/resnet18-5c106cde.pth' # PyTorch Model
+opts['init_model_path'] = '../models/imagenet-resnet-50-dag.mat' # MatLab Model, feel closer with this model
 opts['model_path'] = '../models/mdnet_vot-otb_new2.pth'
 
 opts['batch_frames'] = 8
