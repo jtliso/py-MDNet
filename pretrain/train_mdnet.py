@@ -49,7 +49,7 @@ def train_mdnet():
     if opts['use_gpu']:
         model = model.cuda()
     model.set_learnable_params(opts['ft_layers'])
-        
+
     ## Init criterion and optimizer ##
     criterion = BinaryLoss()
     evaluator = Precision()
