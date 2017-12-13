@@ -16,7 +16,7 @@ opts['batch_neg'] = 96
 opts['overlap_pos'] = [0.7, 1]
 opts['overlap_neg'] = [0, 0.5]
 
-opts['img_size'] = 7#107
+opts['img_size'] = 128#107
 opts['padding'] = 1
 
 opts['lr'] = 0.0001

@@ -139,7 +139,7 @@ class MDNet(nn.Module):
                     ('layer2', self._make_layer(Bottleneck, 128, 4, stride=2)),
                     ('layer3', self._make_layer(Bottleneck, 256, 6, stride=2)),
                     ('layer4', self._make_layer(Bottleneck, 512, 3, stride=2)),
-                    ('avgpool', nn.Sequential(nn.AvgPool2d(7, stride=1))),
+                    ('avgpool', nn.Sequential(nn.AvgPool2d(4, stride=1))),
                     ('fc', nn.Sequential(nn.Linear(512 * BasicBlock.expansion, 1000)))            
         ]))
         '''
@@ -195,7 +195,7 @@ class MDNet(nn.Module):
                 params[k] = p
         return params
     
-    def forward(self, x, k=0, in_layer='conv1', out_layer='fc6'):
+    def forward(self, x, k=0, in_layer='conv1', out_layer='fc'):
         #
         # forward model from in_layer to out_layer
 
@@ -204,17 +204,12 @@ class MDNet(nn.Module):
             if name == in_layer:
                 run = True
             if run:
+                print(name)
                 x = module(x)
-                if name == 'conv3':
+                if name == 'avgpool':
                     x = x.view(x.size(0),-1)
                 if name == out_layer:
                     return x
-        
-        x = self.branches[k](x)
-        if out_layer=='fc6':
-            return x
-        elif out_layer=='fc6_softmax':
-            return F.softmax(x)
     
     def load_model(self, model_path):
         states = torch.load(model_path)
