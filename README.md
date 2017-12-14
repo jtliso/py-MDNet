@@ -2,18 +2,8 @@
 
 by [Hyeonseob Nam](https://kr.linkedin.com/in/hyeonseob-nam/) and [Bohyung Han](http://cvlab.postech.ac.kr/~bhhan/) at POSTECH
 
-### Pretraining (where I am making changes)
- - Download [VGG-M](http://www.vlfeat.org/matconvnet/models/imagenet-vgg-m.mat) (matconvnet model) and save as "models/imagenet-vgg-m.mat" (This is what the code is currently designed to use)
- - Download [VOT](http://www.votchallenge.net/) datasets into "dataset/vot201x"
- - [VOT2013](http://www.votchallenge.net/vot2013/dataset.html)
- - [VOT2014](http://www.votchallenge.net/vot2014/dataset.html)
- - [VOT2016](http://www.votchallenge.net/vot2016/dataset.html), 2015 omitted on purpose
-``` bash
- cd pretrain
- python prepro_data.py
- python train_mdnet.py
-```
- - prepro_data.py should already be run, results stored in pretrain/data/vot-otb.pkl
+Changes made by J.T. Liso (changed architecture from VGGNet to ResNet50 and use of Python 3) for ECE599 Project at the University of Tennessee
+
 
 ## Introduction
 Python (PyTorch) implementation of MDNet tracker, which is ~2x faster than the original matlab implementation. 
@@ -28,10 +18,26 @@ If you're using this code for your research, please cite:
 	month = {June},
 	year = {2016}
 	}
- 
+	
+
 ## Prerequisites
-- python 2.7
+- python 3.6
 - [PyTorch](http://pytorch.org/) and its dependencies 
+- torchvision
+
+### Pretraining
+ - Download [VOT](http://www.votchallenge.net/) datasets into "dataset/vot201x"
+ - [VOT2013](http://www.votchallenge.net/vot2013/dataset.html)
+ - [VOT2014](http://www.votchallenge.net/vot2014/dataset.html)
+ - [VOT2016](http://www.votchallenge.net/vot2016/dataset.html), 2015 omitted on purpose
+``` bash
+ cd pretrain
+ python create_resnet50.py
+ python prepro_data.py
+ python train_mdnet.py
+```
+ - prepro_data.py should already be run, results stored in pretrain/data/vot-otb.pkl
+
 
 ## Usage
 
